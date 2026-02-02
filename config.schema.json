@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Load's Search config",
+  "description": "Schema for config.json in the LoadsSearch data folder",
+  "type": "object",
+  "required": ["folders_to_index"],
+  "properties": {
+    "folders_to_index": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Absolute paths of folders to index for search"
+    },
+    "log_terminal_history": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to log shell commands (Phase 2)"
+    },
+    "log_file_activity": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to log file edits in watched folders (Phase 2)"
+    },
+    "exclude_patterns": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": [".git", "__pycache__", "node_modules", ".venv", "venv"],
+      "description": "Directory names or glob patterns to skip while indexing"
+    },
+    "max_file_size_kb": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 512,
+      "description": "Skip indexing file content above this size (KB)"
+    }
+  }
+}
